@@ -10,13 +10,17 @@ function matches(query, movie) {
   return isInfixOf(query, title(movie));
 }
 
+function addIfMatches(query, movie, result) {
+  if (matches(query, movie)) {
+    result.push(movie);
+  }
+}
+
 function findByTitle(query, collection) {
   let result = [];
   let movie;
   while ((movie = collection.shift())) {
-    if (matches(query, movie)) {
-      result.push(movie);
-    }
+    addIfMatches(query, movie, result);
   }
   return result;
 }
