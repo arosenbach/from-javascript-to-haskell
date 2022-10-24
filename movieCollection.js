@@ -18,7 +18,7 @@ function addIf(predicate, query, movie, add) {
   if (predicate(query, movie)) {
     return add;
   } else {
-    return function doNothing(m, movies) {
+    return function (m, movies) {
       return movies;
     };
   }
@@ -32,7 +32,7 @@ function findByTitle(query, collection) {
     return movies.concat([movie]);
   };
   for (const movie of collection) {
-    // FIXME: complicated :( ++++++++
+    // FIXME: complicated :( +++++++++++++
     // FIXME: "movie" duplicated
     result = addIf(predicate, query, movie, add)(movie, result);
   }
