@@ -1,5 +1,10 @@
+function title(movie) {
+  return movie.title;
+}
+
 function matches(query, movie) {
-  return movie.title.includes(query);
+  return title(movie).includes(query);
+
 }
 
 function findByTitle(query, collection) {
