@@ -8,34 +8,19 @@ const isInfixOf = (query) => (string) => {
   return string.includes(query);
 };
 
+const filter = (predicate) => (collection) => {
+  return collection.filter(predicate);
+};
+
 // matches :: String -> Movie -> Bool
 const matches = (query) => (movie) => {
   return isInfixOf(query)(title(movie));
 };
 
-// addIf :: (Movie -> Bool, Movie, (Movie) -> ([Movie] -> [Movie])) -> ([Movie] -> [Movie])
-const addIf = (predicate) => (movie) => (add) => {
-  if (predicate(movie)) {
-    return add(movie);
-  } else {
-    return (movies) => {
-      return movies;
-    };
-  }
-};
-
 // findByTitle :: String -> [Movie] -> [Movie]
 const findByTitle = (query) => (collection) => {
-  let result = [];
   const predicate = matches(query);
-  const add = (movie) => (movies) => {
-    return movies.concat([movie]);
-  };
-  for (const movie of collection) {
-    // FIXME: complicated :( ++++++++
-    result = addIf(predicate)(movie)(add)(result);
-  }
-  return result;
+  return filter(predicate)(collection);
 };
 
 export default findByTitle;
