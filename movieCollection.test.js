@@ -21,12 +21,12 @@ const movies = [
 
 describe("Movie collection search by name", () => {
   it("should return empty when none found", () => {
-    const actual = findByTitle("Interstallar", movies);
+    const actual = findByTitle("Interstallar")(movies);
     expect(actual).toEqual([]);
   });
 
   it("should return a matching movie", () => {
-    const actual = findByTitle("The Matrix", movies);
+    const actual = findByTitle("The Matrix")(movies);
     expect(actual).toEqual([
       {
         title: "The Matrix",
@@ -36,7 +36,7 @@ describe("Movie collection search by name", () => {
   });
 
   it("should return all matching movies", () => {
-    const actual = findByTitle("o", movies);
+    const actual = findByTitle("o")(movies);
     expect(actual).toEqual([
       {
         title: "Intouchable",
