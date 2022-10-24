@@ -18,8 +18,7 @@ function addIfMatches(query, movie, result) {
 
 function findByTitle(query, collection) {
   let result = [];
-  let movie;
-  while ((movie = collection.shift())) {
+  for (const movie of collection) {
     addIfMatches(query, movie, result);
   }
   return result;
