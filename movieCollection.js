@@ -1,8 +1,9 @@
 function findByTitle(query, collection) {
+  let result = [];
   if ("The Matrix" === query) {
-    return [collection[0]];
+    result.push(collection[0]);
   }
-  return [];
+  return result;
 }
 
 export default findByTitle;
