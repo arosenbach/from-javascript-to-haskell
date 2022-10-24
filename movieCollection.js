@@ -27,8 +27,7 @@ function findByTitle(query, collection) {
   let result = [];
   const predicate = matches;
   // FIXME: side-effect
-  // FIXME: "add" duplicated
-  const add = function add(movie) {
+  const add = function (movie) {
     result.push(movie);
   };
   for (const movie of collection) {
