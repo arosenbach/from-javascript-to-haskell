@@ -3,12 +3,12 @@ const title = (movie) => {
   return movie.title;
 };
 
-// isInfixOf :: (String, String) -> Bool
+// isInfixOf :: String -> String -> Bool
 const isInfixOf = (query) => (string) => {
   return string.includes(query);
 };
 
-// matches :: (String, Movie) -> Bool
+// matches :: String -> Movie -> Bool
 const matches = (query) => (movie) => {
   return isInfixOf(query)(title(movie));
 };
@@ -24,7 +24,7 @@ const addIf = (predicate) => (movie) => (add) => {
   }
 };
 
-// findByTitle :: (String, [Movie]) -> [Movie]
+// findByTitle :: String -> [Movie] -> [Movie]
 const findByTitle = (query) => (collection) => {
   let result = [];
   const predicate = matches(query);
