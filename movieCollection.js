@@ -2,9 +2,12 @@ function title(movie) {
   return movie.title;
 }
 
-function matches(query, movie) {
-  return title(movie).includes(query);
+function isInfixOf(query, string) {
+  return string.includes(query);
+}
 
+function matches(query, movie) {
+  return isInfixOf(query, title(movie));
 }
 
 function findByTitle(query, collection) {
