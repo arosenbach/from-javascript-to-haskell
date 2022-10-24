@@ -13,10 +13,10 @@ function matches(query, movie) {
   return isInfixOf(query, title(movie));
 }
 
-// addIfMatches :: (String, Movie, [Movie]) -> ()
+// addIf :: ((String, Movie) -> Bool, String, Movie, [Movie]) -> ()
 // FIXME: side-effect
-function addIfMatches(query, movie, result) {
-  if (matches(query, movie)) {
+function addIf(predicate, query, movie, result) {
+  if (predicate(query, movie)) {
     result.push(movie);
   }
 }
@@ -26,7 +26,8 @@ function findByTitle(query, collection) {
   let result = [];
   let predicate = matches;
   for (const movie of collection) {
-    addIfMatches(query, movie, result);
+    // FIXME: complicated :(
+    addIf(predicate, query, movie, result);
   }
   return result;
 }
