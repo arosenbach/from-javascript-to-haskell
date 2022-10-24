@@ -1,7 +1,10 @@
 function findByTitle(query, collection) {
   let result = [];
-  if ("The Matrix" === query) {
-    result.push(collection[0]);
+  let movie;
+  while ((movie = collection.shift())) {
+    if (movie.title.includes(query)) {
+      result.push(movie);
+    }
   }
   return result;
 }
