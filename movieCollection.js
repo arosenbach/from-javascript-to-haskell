@@ -26,13 +26,15 @@ function addIf(predicate, query, movie, add) {
 function findByTitle(query, collection) {
   let result = [];
   const predicate = matches;
+  // FIXME: side-effect
+  // FIXME: "add" duplicated
   const add = function add(movie) {
     result.push(movie);
   };
   for (const movie of collection) {
     // FIXME: complicated :( ++++++++
-    const fn = addIf(predicate, query, movie, add);
-    fn(movie);
+    // FIXME: "movie" duplicated
+    addIf(predicate, query, movie, add)(movie);
   }
   return result;
 }
