@@ -18,8 +18,8 @@ const matches = (query) => (movie) => {
 };
 
 // findByTitle :: String -> [Movie] -> [Movie]
-const findByTitle = (query) => (collection) => {
-  return filter(matches(query))(collection);
+const findByTitle = (query) => {
+  return filter(matches(query));
 };
 
 export default findByTitle;
