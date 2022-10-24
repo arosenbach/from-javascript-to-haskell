@@ -1,5 +1,5 @@
 function findByTitle(query, collection) {
-  return undefined;
+  return [];
 }
 
 export default findByTitle;
