@@ -22,8 +22,6 @@ const matches = (query) => {
 };
 
 // findByTitle :: String -> [Movie] -> [Movie]
-const findByTitle = (query) => {
-  return compose(filter)(matches)(query);
-};
+const findByTitle = compose(filter)(matches);
 
 export default findByTitle;
