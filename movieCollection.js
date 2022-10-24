@@ -19,8 +19,7 @@ const matches = (query) => (movie) => {
 
 // findByTitle :: String -> [Movie] -> [Movie]
 const findByTitle = (query) => (collection) => {
-  const predicate = matches(query);
-  return filter(predicate)(collection);
+  return filter(matches(query))(collection);
 };
 
 export default findByTitle;
