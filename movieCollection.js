@@ -1,25 +1,9 @@
-// title :: Movie -> String
-const title = (movie) => {
-  return movie.title;
-};
-
-// isInfixOf :: String -> String -> Bool
-const isInfixOf = (query) => (string) => {
-  return string.includes(query);
-};
-
-const filter = (predicate) => (collection) => {
-  return collection.filter(predicate);
-};
-
-const compose = (f) => (g) => (x) => {
-  return f(g(x));
-};
+import * as R from "ramda";
 
 // matches :: String -> Movie -> Bool
-const matches = (query) => compose(isInfixOf(query))(title);
+const matches = (query) => R.o(R.includes(query))(R.path(["title"]));
 
 // findByTitle :: String -> [Movie] -> [Movie]
-const findByTitle = compose(filter)(matches);
+const findByTitle = R.o(R.filter)(matches);
 
 export default findByTitle;
