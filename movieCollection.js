@@ -24,6 +24,7 @@ function addIfMatches(query, movie, result) {
 // findByTitle :: (String, [Movie]) -> [Movie]
 function findByTitle(query, collection) {
   let result = [];
+  let predicate = matches;
   for (const movie of collection) {
     addIfMatches(query, movie, result);
   }
