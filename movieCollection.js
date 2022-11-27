@@ -17,8 +17,8 @@ const compose = (f) => (g) => (x) => {
 };
 
 // matches :: String -> Movie -> Bool
-const matches = (query) => (movie) => {
-  return compose(isInfixOf(query))(title)(movie);
+const matches = (query) => {
+  return compose(isInfixOf(query))(title);
 };
 
 // findByTitle :: String -> [Movie] -> [Movie]
