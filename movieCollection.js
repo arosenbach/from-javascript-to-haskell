@@ -1,9 +1,9 @@
-import * as R from "ramda";
+import { o, includes, filter, path } from "ramda";
 
 // matches :: Path -> String -> Movie -> Bool
-const matches = (path) => (query) => R.o(R.includes(query))(R.path(path));
+const matches = (aPath) => (query) => o(includes(query))(path(aPath));
 
 // findByTitle :: String -> [Movie] -> [Movie]
-const findByTitle = R.o(R.filter)(matches(["title"]));
+const findByTitle = o(filter)(matches(["title"]));
 
 export default findByTitle;
