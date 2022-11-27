@@ -12,14 +12,18 @@ const filter = (predicate) => (collection) => {
   return collection.filter(predicate);
 };
 
+const compose = (f) => (g) => (x) => {
+  return f(g(x));
+};
+
 // matches :: String -> Movie -> Bool
 const matches = (query) => (movie) => {
-  return isInfixOf(query)(title(movie));
+  return compose(isInfixOf(query))(title)(movie);
 };
 
 // findByTitle :: String -> [Movie] -> [Movie]
 const findByTitle = (query) => {
-  return filter(matches(query));
+  return compose(filter)(matches)(query);
 };
 
 export default findByTitle;
